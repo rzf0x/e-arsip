@@ -79,10 +79,7 @@
                 <li class="sidebar-title">Logout</li>
 
                 <li class="sidebar-item">
-                    <a wire:navigate href="{{ route('dashboard') }}" class='sidebar-link'>
-                        <i class="bi bi-box-arrow-left"></i>
-                        <span>Logout</span>
-                    </a>
+                    <livewire:Auth.Logout>
                 </li>
 
             </ul>

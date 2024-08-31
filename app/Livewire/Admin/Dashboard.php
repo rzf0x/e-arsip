@@ -5,12 +5,32 @@ namespace App\Livewire\Admin;
 use App\Models\Books;
 use App\Models\CupboardNumber;
 use App\Models\Document;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 #[\Livewire\Attributes\Title('Dashboard Admin')]
 
 class Dashboard extends Component
 {
+
+    // List Book
+    #[Computed]
+    public function listBook()
+    {
+        return Books::orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+    }
+
+    // List Document
+    #[Computed]
+    public function listDocument()
+    {
+        return Document::orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+    }
+
     public function render()
     {
         $data = [

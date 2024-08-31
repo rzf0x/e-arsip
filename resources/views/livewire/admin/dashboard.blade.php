@@ -114,5 +114,134 @@
             </div>
         </div>
 
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body py-4 px-4">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar avatar-xl">
+                            <img src="{{ asset('dist/assets/compiled/jpg/1.jpg') }}" alt="Face 1">
+                        </div>
+                        <div class="ms-3 name">
+                            <h5 class="font-bold">{{ Auth::user()->name }}</h5>
+                            <h6 class="text-muted mb-0">{{ Auth::user()->email }} </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card mt-3">
+                <div class="card-header fs-4 fw-semibold text-info">
+                    List Buku Terbaru
+                </div>
+                <div class="card-body">
+                    @if (session()->has('message'))
+                        <div class="alert alert-success" wire:loading>
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="px-4 py-2">No</th>
+                                    <th class="px-4 py-2">No Book</th>
+                                    <th class="px-4 py-2">Title</th>
+                                    <th class="px-4 py-2">Year</th>
+                                    <th class="px-4 py-2">Publisher</th>
+                                    <th class="px-4 py-2">Status</th>
+                                    <th class="px-4 py-2">Photo</th>
+                                    <th class="px-4 py-2">Cupboard Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($this->listBook as $book)
+                                    <tr>
+                                        <td class="border px-4 py-2">{{ $loop->index + 1 }}</td>
+                                        <td class="border px-4 py-2">{{ $book->no_book }}</td>
+                                        <td class="border px-4 py-2">{{ $book->title_book }}</td>
+                                        <td class="border px-4 py-2">{{ $book->year_publish }}</td>
+                                        <td class="border px-4 py-2">{{ $book->book_publisher }}</td>
+                                        <td class="border px-4 py-2">{{ $book->status }}</td>
+                                        <td class="border px-4 py-2">
+                                            <img src="{{ asset($book->foto) }}" width="50" height="50"
+                                                alt="{{ $book->title_book }}">
+                                        </td>
+                                        <td class="border px-4 py-2">{{ $book->cupboardNumber->number }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="9" class="text-center">No data available</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card mt-3">
+                <div class="card-header fs-4 fw-semibold text-info">
+                    List Dokumen Terbaru
+                </div>
+                <div class="card-body">
+                    @if (session()->has('message'))
+                        <div class="alert alert-success" wire:loading>
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="px-4 py-2">No</th>
+                                    <th class="px-4 py-2">No Dokumen</th>
+                                    <th class="px-4 py-2">Judul</th>
+                                    <th class="px-4 py-2">Deskripsi</th>
+                                    <th class="px-4 py-2">Tahun</th>
+                                    <th class="px-4 py-2">Pengirim</th>
+                                    <th class="px-4 py-2">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($this->listDocument as $book)
+                                    <tr>
+                                        <td class="border px-4 py-2">{{ $loop->iteration }}</td>
+                                        <td class="border px-4 py-2">{{ $book->no }}</td>
+                                        <td class="border px-4 py-2">{{ $book->title }}</td>
+                                        <td class="border px-4 py-2">{{ $book->desc }}</td>
+                                        <td class="border px-4 py-2">{{ $book->year }}</td>
+                                        <td class="border px-4 py-2">{{ $book->sender }}</td>
+                                        <td class="border px-4 py-2">{{ $book->status }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="9" class="text-center">No data available</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

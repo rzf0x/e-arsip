@@ -58,7 +58,7 @@
         @endif
     @else
         <div class="row gap-4 mx-5 mt-5">
-            @foreach ($listBook as $item)
+            @forelse ($listBook as $item)
                 <div class="card col-lg-2 col-md-6 col-12">
                     <div class="card-content">
                         <img src="{{ asset($item->foto) }}" class="card-img-top img-fluid" alt="singleminded">
@@ -87,7 +87,10 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <p class="text-center fs-4">Belum ada buku yang di tambahkan😓 <br> Silahkan tunggu admin untuk upload
+                    dulu ya😄</p>
+            @endforelse
         </div>
     @endif
 
