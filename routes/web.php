@@ -35,4 +35,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/list-buku', App\Livewire\Admin\ListBook::class)->name('list-buku');
     Route::get('/list-dokumen', App\Livewire\Admin\ListDocument::class)->name('list-dokumen');
     Route::get('/list-lemari', App\Livewire\Admin\ListCupboard::class)->name('list-lemari');
+
+    Route::prefix('list-buku')->group(function () {
+        Route::get('/list-dokumen-tatalaksana', App\Livewire\Admin\Book\ListDocumentTatalaksana::class)->name('list-dokumen-tatalaksana');
+        Route::get('/list-dokumen-pelayanan-public', App\Livewire\Admin\Book\ListDocumentPelayananPublic::class)->name('list-dokumen-pelayanan-public');
+    });
 });

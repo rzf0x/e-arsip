@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-#[\Livewire\Attributes\Title('List Buku')]
+#[\Livewire\Attributes\Title('List Dokumen')]
 
 class ListBook extends Component
 {

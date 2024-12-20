@@ -10,6 +10,12 @@ class Document extends Model
     use HasFactory;
 
     protected $fillable = [
-        'no', 'title', 'desc', 'year', 'sender', 'status'
+        'no',
+        'title',
+        'desc',
+        'year',
+        'sender',
+        'status',
+        'tipe_doc'
     ];
 }

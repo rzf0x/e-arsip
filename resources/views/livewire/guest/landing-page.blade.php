@@ -3,7 +3,7 @@
     <div class="w-100">
         <div class="d-flex justify-content-center mt-5 mx-5">
             <div>
-                <h1 class="mb-2">Cari buku yang kamu butuhkan 🙌</h1>
+                <h1 class="mb-2">Cari buku yang kamu butuhkan </h1>
 
                 <input type="text" class="form-control mb-2" wire:model="query" placeholder="Masukkan nama buku">
 
@@ -19,8 +19,10 @@
 
     @if ($book)
         @if ($book->isEmpty())
-            <h2>Search Results:</h2>
-            <p>Tidak ada buku</p>
+            <div class="text-center mt-5">
+                <h2>Hasil Pencarian :</h2>
+                <p>Buku yang kamu cari tidak ada </p>
+            </div>
         @else
             <h2 class="ms-5 mt-5">Hasil pencarian buku :</h2>
             <div class="row gap-4 mx-5 mt-5">
@@ -88,8 +90,8 @@
                     </div>
                 </div>
             @empty
-                <p class="text-center fs-4">Belum ada buku yang di tambahkan😓 <br> Silahkan tunggu admin untuk upload
-                    dulu ya😄</p>
+                <p class="text-center fs-4">Belum ada buku yang di tambahkan <br> Silahkan tunggu admin untuk upload
+                    dulu</p>
             @endforelse
         </div>
     @endif

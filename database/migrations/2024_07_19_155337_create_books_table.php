@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('books', function (Blueprint $table) {
@@ -17,7 +14,8 @@ return new class extends Migration
             $table->string('title_book');
             $table->integer('year_publish');
             $table->string('book_publisher');
-            $table->enum('status', ['rusak', 'hilang', 'musnah', 'layak']);
+            $table->enum('status', ['rusak', 'musnah', 'layak']);
+            $table->enum('tipe_book', ['tatalaksana', 'pelayanan_public ']);
             $table->string('foto');
             $table->unsignedBigInteger('cupboard_number_id');
             $table->timestamps();
@@ -26,9 +24,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('books');

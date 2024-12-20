@@ -44,10 +44,19 @@
         <div class="sidebar-menu">
             <ul class="menu">
 
+                <li class="sidebar-item">
+                    <div class="sidebar-link">
+                        <div class="bg-info text-white w-100 py-3 px-3 rounded-2">
+                            <h6>Hi, Admin 👋</h6>
+                            <small>Selamat datang admin</small>
+                        </div>
+                    </div>
+                </li>
+
                 <li class="sidebar-title">Dashboard</li>
 
                 <li class="sidebar-item {{ Request::is('admin/dashboard') ? 'active' : '' }}">
-                    <a wire:navigate href="{{ route('dashboard') }}" class='sidebar-link'>
+                    <a href="{{ route('dashboard') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
@@ -55,22 +64,29 @@
 
                 <li class="sidebar-title">Master Data</li>
 
-                <li class="sidebar-item {{ Request::is('admin/list-buku') ? 'active' : '' }}"">
-                    <a wire:navigate href={{ route('list-buku') }} class='sidebar-link'>
+                <li class="sidebar-item {{ Request::is('admin/list-buku/*') ? 'active' : '' }} has-sub">
+                    <a href="#" class="sidebar-link">
                         <i class="bi bi-book-fill"></i>
-                        <span>List Buku</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item {{ Request::is('admin/list-dokumen') ? 'active' : '' }}"">
-                    <a wire:navigate href={{ route('list-dokumen') }} class='sidebar-link'>
-                        <i class="bi bi-archive-fill"></i>
                         <span>List Dokumen</span>
                     </a>
+
+                    <ul class="submenu submenu-closed" style="--submenu-height: 215px;">
+                        <li
+                            class="submenu-item  {{ Request::is('admin/list-buku/list-dokumen-tatalaksana') ? 'active' : '' }}">
+                            <a href="{{ route('list-dokumen-tatalaksana') }}" class="submenu-link">Dokumen
+                                Tatalaksana</a>
+                        </li>
+
+                        <li
+                            class="submenu-item  {{ Request::is('admin/list-buku/list-dokumen-pelayanan-public') ? 'active' : '' }}">
+                            <a href="{{ route('list-dokumen-pelayanan-public') }}" class="submenu-link">Dokumen
+                                Pelayanan Public</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-item {{ Request::is('admin/list-lemari') ? 'active' : '' }}"">
-                    <a wire:navigate href={{ route('list-lemari') }} class='sidebar-link'>
+                    <a href={{ route('list-lemari') }} class='sidebar-link'>
                         <i class="bi bi-collection-fill"></i>
                         <span>List Lemari</span>
                     </a>

@@ -18,7 +18,8 @@ return new class extends Migration
             $table->text('desc');
             $table->integer('year');
             $table->string('sender');
-            $table->enum('status', ['rusak', 'hilang', 'musnah', 'layak']);
+            $table->enum('status', ['rusak', 'musnah', 'layak']);
+            $table->enum('tipe_doc', ['tatalaksana', 'pelayanan_public ']);
             $table->timestamps();
         });
     }

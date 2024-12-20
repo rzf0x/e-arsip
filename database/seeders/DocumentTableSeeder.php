@@ -20,15 +20,7 @@ class DocumentTableSeeder extends Seeder
             'year' => 2020,
             'sender' => 'Sender 1',
             'status' => 'rusak',
-        ]);
-
-        Document::create([
-            'no' => 'doc-0002',
-            'title' => 'Document Title 2',
-            'desc' => 'Description 2',
-            'year' => 2021,
-            'sender' => 'Sender 2',
-            'status' => 'hilang',
+            'tipe_doc' => 'tatalaksana'
         ]);
 
         Document::create([
@@ -38,6 +30,7 @@ class DocumentTableSeeder extends Seeder
             'year' => 2019,
             'sender' => 'Sender 3',
             'status' => 'musnah',
+            'tipe_doc' => 'tatalaksana'
         ]);
 
         Document::create([
@@ -47,6 +40,7 @@ class DocumentTableSeeder extends Seeder
             'year' => 2018,
             'sender' => 'Sender 4',
             'status' => 'layak',
+            'tipe_doc' => 'pelayanan_public'
         ]);
     }
 }

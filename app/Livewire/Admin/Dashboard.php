@@ -13,6 +13,8 @@ use Livewire\Component;
 class Dashboard extends Component
 {
 
+    public $totalLemari, $totalDokumentatalaksana, $totalDokumenPelayananPublic;
+
     // List Book
     #[Computed]
     public function listBook()
@@ -24,34 +26,22 @@ class Dashboard extends Component
 
     // List Document
     #[Computed]
-    public function listDocument()
+    public function listCupBoard()
     {
-        return Document::orderBy('created_at', 'desc')
+        return CupboardNumber::orderBy('created_at', 'desc')
             ->take(5)
             ->get();
     }
 
+    public function mount()
+    {
+        $this->totalLemari = CupboardNumber::count();
+        $this->totalDokumentatalaksana = Document::where('tipe_doc', 'tatalaksana')->count();
+        $this->totalDokumenPelayananPublic = Document::where('tipe_doc', 'pelayanan_public')->count();
+    }
+
     public function render()
     {
-        $data = [
-            // Book List
-            'total_buku' => Books::count(),
-            'total_buku_rusak' => Books::where('status', 'rusak')->count(),
-            'total_buku_hilang' => Books::where('status', 'hilang')->count(),
-            'total_buku_musnah' => Books::where('status', 'musnah')->count(),
-            'total_buku_layak' => Books::where('status', 'layak')->count(),
-
-            // Document
-            'total_document' => Document::count(),
-            'total_document_rusak' => Document::where('status', 'rusak')->count(),
-            'total_document_hilang' => Document::where('status', 'hilang')->count(),
-            'total_document_musnah' => Document::where('status', 'musnah')->count(),
-            'total_document_layak' => Document::where('status', 'layak')->count(),
-
-            // Lemari
-            'total_lemari' => CupboardNumber::count(),
-        ];
-
-        return view('livewire.admin.dashboard', $data);
+        return view('livewire.admin.dashboard');
     }
 }

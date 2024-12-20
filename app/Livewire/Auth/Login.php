@@ -63,7 +63,7 @@ class Login extends Component
         if (Auth::attempt($credentials)) {
             session()->flash('message', 'You have successfully logged in!');
 
-            return $this->redirectRoute('dashboard', navigate: true);
+            return $this->redirectRoute('dashboard');
         }
 
         session()->flash('error', 'Invalid credentials!');

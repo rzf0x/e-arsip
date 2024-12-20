@@ -65,6 +65,9 @@
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-info">Tambah data lemari</h5>
+                </div>
                 <div class="modal-body">
                     <form class="d-flex flex-column gap-2"
                         wire:submit.prevent="{{ $rakLemariId ? 'update' : 'store' }}">
@@ -72,7 +75,7 @@
                             Loading...
                         </div>
 
-                        <div>
+                        <div class="mb-3">
                             <label class="fw-bold">Nama Lemari</label>
                             <input type="text" class="form-control @error('number') is-invalid @enderror"
                                 wire:model="number">
@@ -83,7 +86,7 @@
                             @enderror
                         </div>
 
-                        <div>
+                        <div class="mb-3">
                             <label class="fw-bold">Deskripsi</label>
                             <input type="text" class="form-control @error('description') is-invalid @enderror"
                                 wire:model="description">

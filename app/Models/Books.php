@@ -10,7 +10,14 @@ class Books extends Model
     use HasFactory;
 
     protected $fillable = [
-        'no_book', 'title_book', 'year_publish', 'book_publisher', 'status', 'foto', 'cupboard_number_id'
+        'no_book',
+        'title_book',
+        'year_publish',
+        'book_publisher',
+        'status',
+        'foto',
+        'cupboard_number_id',
+        'tipe_book'
     ];
 
     public function cupboardNumber()
