@@ -16,6 +16,8 @@
     <link rel="stylesheet" crossorigin href="{{ asset('dist/assets/compiled/css/app.css') }}">
     <link rel="stylesheet" crossorigin href="{{ asset('dist/assets/compiled/css/app-dark.css') }}">
     <link rel="stylesheet" crossorigin href="{{ asset('dist/assets/compiled/css/iconly.css') }}">
+
+    @livewireStyles
 </head>
 
 <body>
@@ -43,15 +45,17 @@
 
         </div>
     </div>
+
+
     <script src="{{ asset('dist/assets/static/js/components/dark.js') }}"></script>
     <script src="{{ asset('dist/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
 
     <script src="{{ asset('dist/assets/compiled/js/app.js') }}"></script>
 
     <!-- Need: Apexcharts -->
-    <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="assets/static/js/pages/dashboard.js"></script>
-
+    @livewireScripts
 </body>
 
 </html>

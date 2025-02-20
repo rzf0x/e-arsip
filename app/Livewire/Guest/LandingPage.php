@@ -2,32 +2,57 @@
 
 namespace App\Livewire\Guest;
 
-use App\Models\Books;
+use App\Models\documents;
+use App\Models\Document;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class LandingPage extends Component
 {
-    public $query;
-    public $book;
 
-    #[Title('Website E-arsip')]
+    use WithPagination;
 
-    public function searchBook()
+    #[Layout('components.layouts.guest')]
+    #[Title('Sistem Informasi kumpulan arsip bagian organisasi')]
+
+    public $searchTerm = '';
+    public $documents;
+
+    public function mount()
     {
-        $this->book = Books::where('title_book', 'like', '%' . $this->query . '%')->get();
+        // Inisialisasi dengan koleksi kosong
+        $this->documents = collect();
     }
 
-    public function resetBook()
+    public function updatedSearchTerm()
     {
-        $this->book = '';
-        $this->query = '';
+        $this->searchDocuments();
+    }
+
+    public function searchDocuments()
+    {
+        $this->documents = Document::where('title', 'like', '%' . $this->searchTerm . '%')
+            ->orWhere('sender', 'like', '%' . $this->searchTerm . '%')
+            ->orWhere('no', 'like', '%' . $this->searchTerm . '%')
+            ->get(); // Ini akan mengembalikan koleksi
+    }
+
+    public function resetSearch()
+    {
+        $this->searchTerm = '';
+        $this->documents = collect(); // Reset documents
     }
 
     public function render()
     {
+        // Ambil 6 dokumen terbaru untuk ditampilkan
+        $latestDocuments = Document::orderBy('created_at', 'desc')->paginate(6);
+
         return view('livewire.guest.landing-page', [
-            'listBook' => Books::paginate(5),
-        ])->layout('components.layouts.guest');
+            'latestDocuments' => $latestDocuments,
+            'documents' => $this->documents,
+        ]);
     }
 }

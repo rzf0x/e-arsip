@@ -1,5 +1,9 @@
 <div>
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-success">
+            <i class="bi bi-file-earmark-text-fill"></i>
+            Dokumen Tatalaksana
+        </button>
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#info">
             <i class="bi bi-plus-circle-fill"></i>
             Tambah Data

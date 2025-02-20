@@ -18,8 +18,9 @@ return new class extends Migration
             $table->text('desc');
             $table->integer('year');
             $table->string('sender');
-            $table->enum('status', ['rusak', 'musnah', 'layak']);
-            $table->enum('tipe_doc', ['tatalaksana', 'pelayanan_public ']);
+            $table->string('file');
+            $table->enum('status', ['aktif', 'inaktif']);
+            $table->enum('tipe_doc', ['tatalaksana_pelayanan_publik', 'kelembagaan_anjab', 'inovasi_pelayanan_publik', 'peningkatan_kinerja_reformasi_birokrasi']);
             $table->timestamps();
         });
     }

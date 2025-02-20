@@ -1,5 +1,9 @@
 <?php
 
+use App\Livewire\Admin\Dokumen\ListDokumenDataInovasiPelayananPublik;
+use App\Livewire\Admin\Dokumen\ListDokumenKelembagaanAnjab;
+use App\Livewire\Admin\Dokumen\ListDokumenPeningkatanKinerjaReformasiBirokrasi;
+use App\Livewire\Admin\Dokumen\ListDokumenTatalaksanaPelayananPublik;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,8 +40,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/list-dokumen', App\Livewire\Admin\ListDocument::class)->name('list-dokumen');
     Route::get('/list-lemari', App\Livewire\Admin\ListCupboard::class)->name('list-lemari');
 
-    Route::prefix('list-buku')->group(function () {
-        Route::get('/list-dokumen-tatalaksana', App\Livewire\Admin\Book\ListDocumentTatalaksana::class)->name('list-dokumen-tatalaksana');
-        Route::get('/list-dokumen-pelayanan-public', App\Livewire\Admin\Book\ListDocumentPelayananPublic::class)->name('list-dokumen-pelayanan-public');
+    // Route::prefix('list-buku')->group(function () {
+    //     Route::get('/list-dokumen-tatalaksana', App\Livewire\Admin\Book\ListDocumentTatalaksana::class)->name('list-dokumen-tatalaksana');
+    //     Route::get('/list-dokumen-pelayanan-public', App\Livewire\Admin\Book\ListDocumentPelayananPublic::class)->name('list-dokumen-pelayanan-public');
+    // });
+
+    Route::prefix('list-dokumen')->group(function () {
+        Route::get('/list-dokumen-tatalaksana-pelayanan-publik', ListDokumenTatalaksanaPelayananPublik::class)->name('list-dokumen-tatalaksana-pelayanan-publik');
+        Route::get('/list-dokumen-peningkatan-kinerja-reformasi-birokrasi', ListDokumenPeningkatanKinerjaReformasiBirokrasi::class)->name('list-dokumen-peningkatan-kinerja-reformasi-birokrasi');
+        Route::get('/list-dokumen-kelembagaan-anjab', ListDokumenKelembagaanAnjab::class)->name('list-dokumen-kelembagaan-anjab');
+        Route::get('/list-dokumen-data-inovasi-pelayanan-publik', ListDokumenDataInovasiPelayananPublik::class)->name('list-dokumen-data-inovasi-pelayanan-publik');
     });
 });

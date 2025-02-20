@@ -1,103 +1,91 @@
-<div>
+<div class="container mt-5">
 
-    <div class="w-100">
-        <div class="d-flex justify-content-center mt-5 mx-5">
-            <div>
-                <h1 class="mb-2">Cari buku yang kamu butuhkan </h1>
+    <h2 class="text-center">
+        Selamat datang di Sistem Informasi <br> kumpulan arsip bagian organisasi
+    </h2>
 
-                <input type="text" class="form-control mb-2" wire:model="query" placeholder="Masukkan nama buku">
-
-                <div class="d-flex justify-content-end">
-                    <button wire:click="searchBook" class="btn btn-primary">Cari buku</button>
-                    @if ($book)
-                        <button wire:click="resetBook" class="btn ms-2 btn-primary">Reset Pencarian</button>
-                    @endif
-                </div>
-            </div>
-        </div>
+    <div class="mb-4 mt-5">
+        <input type="text" wire:model="searchTerm" placeholder="Cari dokumen..." class="form-control" />
+        <button wire:click="searchDocuments" class="btn btn-primary mt-2">Cari</button>
+        <button wire:click="resetSearch" class="btn btn-secondary mt-2">Reset</button>
     </div>
 
-    @if ($book)
-        @if ($book->isEmpty())
-            <div class="text-center mt-5">
-                <h2>Hasil Pencarian :</h2>
-                <p>Buku yang kamu cari tidak ada </p>
-            </div>
-        @else
-            <h2 class="ms-5 mt-5">Hasil pencarian buku :</h2>
-            <div class="row gap-4 mx-5 mt-5">
-                @foreach ($book as $item)
-                    <div class="card col-lg-2 col-md-6 col-12">
-                        <div class="card-content">
-                            <img src="{{ asset($item->foto) }}" class="img-thumbnail" alt="singleminded">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="card-title mt-1">{{ $item->title_book }}</h5>
+    @if ($documents->isNotEmpty())
+        <h3>Hasil Pencarian</h3>
+        <div class="row">
+            @foreach ($documents as $document)
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card border-0 shadow-lg rounded-4">
 
-                                    <div
-                                        class="btn
-                                                    @if ($item->status == 'rusak') btn-danger
-                                                    @elseif ($item->status == 'hilang') btn-info 
-                                                    @elseif ($item->status == 'musnah') btn-warning
-                                                    @else btn-primary @endif">
-                                        {{ $item->status }}
-                                    </div>
-                                </div>
-                                <p class="card-text mt-2">
-                                    Rincian buku :
-                                </p>
-                                <ul class="">
-                                    <li>Tahun terbit : {{ $item->year_publish }}</li>
-                                    <li>Publisher buku : {{ $item->book_publisher }}</li>
-                                    <li>Rak Lemari : <strong>{{ $item->cupboardNumber->number }}</strong></li>
-                                </ul>
-                                {{-- </p> --}}
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-end">
+                                <small
+                                    class="badge bg-primary mb-3">{{ ucfirst(str_replace('_', ' ', $document->tipe_doc)) }}</small>
                             </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        @endif
-    @else
-        <div class="row gap-4 mx-5 mt-5">
-            @forelse ($listBook as $item)
-                <div class="card col-lg-2 col-md-6 col-12">
-                    <div class="card-content">
-                        <img src="{{ asset($item->foto) }}" class="card-img-top img-fluid" alt="singleminded">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="card-title mt-1">{{ $item->title_book }}</h5>
-
-                                <div
-                                    class="btn
-                                                @if ($item->status == 'rusak') btn-danger
-                                                @elseif ($item->status == 'hilang') btn-info 
-                                                @elseif ($item->status == 'musnah') btn-warning
-                                                @else btn-primary @endif">
-                                    {{ $item->status }}
-                                </div>
-                            </div>
-                            <p class="card-text mt-2">
-                                Rincian buku :
-                            </p>
-                            <ul class="">
-                                <li>Tahun terbit : {{ $item->year_publish }}</li>
-                                <li>Publisher buku : {{ $item->book_publisher }}</li>
-                                <li>Rak Lemari : <strong>{{ $item->cupboardNumber->number }}</strong></li>
-                            </ul>
-                            {{-- </p> --}}
+                            <h5 class="card-title fw-bold text-info">{{ $document->title }}</h5>
+                            <p class="card-text mb-2">️#️⃣<strong>No:</strong>
+                                {{ $document->no }}</p>
+                            <p class="card-text mb-2">📩<strong>Pengirim:</strong>
+                                {{ $document->sender }}</p>
+                            {{-- <p class="card-text mb-2">📂 <strong>Tipe
+                                Dokumen:</strong>
+                            
+                        </p> --}}
+                            <p class="card-text mb-3">🗓️ <strong>Tahun:</strong>
+                                {{ $document->year }}</p>
+                            <a href="{{ asset($document->file) }}"
+                                class="btn btn-primary w-100 d-flex align-items-center justify-content-center"
+                                target="_blank">
+                                📌Lihat Dokumen
+                            </a>
                         </div>
                     </div>
                 </div>
-            @empty
-                <p class="text-center fs-4">Belum ada buku yang di tambahkan <br> Silahkan tunggu admin untuk upload
-                    dulu</p>
-            @endforelse
+            @endforeach
         </div>
+    @else
+        @if ($searchTerm)
+            <p>Tidak ada dokumen yang ditemukan.</p>
+        @else
+            <h3>Dokumen Terbaru</h3>
+            @if ($latestDocuments->isNotEmpty())
+                <div class="row">
+                    @foreach ($latestDocuments as $document)
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card border-0 shadow-lg rounded-4">
+
+                                <div class="card-body p-4">
+                                    <div class="d-flex justify-content-end">
+                                        <small
+                                            class="badge bg-primary mb-3">{{ ucfirst(str_replace('_', ' ', $document->tipe_doc)) }}</small>
+                                    </div>
+                                    <h5 class="card-title fw-bold text-info">{{ $document->title }}</h5>
+                                    <p class="card-text mb-2">️#️⃣<strong>No:</strong>
+                                        {{ $document->no }}</p>
+                                    <p class="card-text mb-2">📩<strong>Pengirim:</strong>
+                                        {{ $document->sender }}</p>
+                                    {{-- <p class="card-text mb-2">📂 <strong>Tipe
+                                            Dokumen:</strong>
+                                        
+                                    </p> --}}
+                                    <p class="card-text mb-3">🗓️ <strong>Tahun:</strong>
+                                        {{ $document->year }}</p>
+                                    <a href="{{ asset($document->file) }}"
+                                        class="btn btn-primary w-100 d-flex align-items-center justify-content-center"
+                                        target="_blank">
+                                        📌Lihat Dokumen
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Pagination Links -->
+                {{ $latestDocuments->links() }}
+            @else
+                <p>Tidak ada dokumen terbaru.</p>
+            @endif
+        @endif
     @endif
-
-    {{-- <p>{{ $item->title_book }}</p>
-    @endforeach --}}
-
-
 </div>

@@ -1,86 +1,88 @@
 <div>
     <div class="row">
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="text-center text-info">Bagian Tatalaksana</h5>
-                </div>
-                <div class="card-body text-center">
-                    <a href="{{ route('list-dokumen-tatalaksana') }}">
-                        <button class="btn btn-primary">
-                            Klik
-                        </button>
-                    </a>
-                    <br>
-                    <br>
-                    <small>Total dokumen tersedia {{ $totalDokumentatalaksana }}</small>
+        {{-- Graphic Chart --}}
+        <div class="col-lg-6 col-md-12 col-12">
+            <div class="card" style="height: 100%;">
+                <div class="card-body" style="height: 100%;">
+                    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+                    <div id="chart" style="height: 75vh;"></div>
+
+                    <script>
+                        var options = {
+                            series: [{
+                                name: "Total Dokumen",
+                                data: @json($pendapatanBulanan) // Menggunakan data dari database
+                            }],
+                            chart: {
+                                type: 'bar',
+                                height: '100%' // Mengatur tinggi chart ke 100% dari elemen induk
+                            },
+                            plotOptions: {
+                                bar: {
+                                    columnWidth: '50%',
+                                    distributed: true
+                                }
+                            },
+                            xaxis: {
+                                categories: @json($years), // Menggunakan tahun yang diambil dari database
+                                labels: {
+                                    style: {
+                                        fontSize: '14px'
+                                    }
+                                }
+                            },
+                            title: {
+                                text: "Total Dokumen Pertahun",
+                                align: "center"
+                            }
+                        };
+
+                        var chart = new ApexCharts(document.querySelector("#chart"), options);
+                        chart.render();
+                    </script>
                 </div>
             </div>
         </div>
+        <div class="col-lg-6 col-md-12 col-12">
+            <div class="row">
+                <div class="col-lg-6">
+                    <x-card title="Sub Bag Tatalaksana dan Pelayanan Publik"
+                        route="{{ route('list-dokumen-tatalaksana-pelayanan-publik') }}"
+                        buttonText="📂 Klik untuk melihat detail"
+                        footerText="📑 Total jumlah dokumen tersedia : {{ $totalDokumentatalaksanaPelayananPublik }}" />
 
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="text-center text-info">Bagian Pelayanan Publik</h5>
                 </div>
-                <div class="card-body text-center">
-                    <a href="{{ route('list-dokumen-pelayanan-public') }}">
-                        <button class="btn btn-primary">
-                            Klik
-                        </button>
-                    </a>
-                    <br>
-                    <br>
-                    <small>Total dokumen tersedia {{ $totalDokumenPelayananPublic }}</small>
+                <div class="col-lg-6">
+                    <x-card title="Sub Bag Peningkanan Kinerja dan Reformasi Birokrasi"
+                        route="{{ route('list-dokumen-peningkatan-kinerja-reformasi-birokrasi') }}"
+                        buttonText="📂 Klik untuk melihat detail"
+                        footerText="📑 Total jumlah dokumen tersedia : {{ $totalDokumenKelembagaanAnjab }}" />
+
                 </div>
+                <div class="col-lg-6">
+                    <x-card title="Sub Bag Kelembagaan dan Anjab" route="{{ route('list-dokumen-kelembagaan-anjab') }}"
+                        buttonText="📂 Klik untuk melihat detail"
+                        footerText="📑 Total jumlah dokumen tersedia : {{ $totalDokumenInovasiPelayananPublik }}" />
+
+                </div>
+
+                <div class="col-lg-6">
+                    <x-card title="Data Inovasi Pelayanan publik"
+                        route="{{ route('list-dokumen-data-inovasi-pelayanan-publik') }}"
+                        buttonText="📂 Klik untuk melihat detail"
+                        footerText="📑 Total jumlah dokumen tersedia : {{ $totalDokumenPeningkatanKinerjaReformasiBirokrasi }}" />
+
+                </div>
+
+                <div class="col-lg-12">
+                    <x-card title="Jumlah Lemari" route="{{ route('list-lemari') }}"
+                        buttonText="📂 Klik untuk melihat detail"
+                        footerText="📑 Total jumlah dokumen tersedia : {{ $totalLemari }}" />
+
+                </div>
+
             </div>
         </div>
-
-        <div class="col-lg-12">
-            <div class="card mt-3">
-                <div class="card-header fs-4 fw-semibold text-info">
-                    List Dokumen Terbaru
-                </div>
-                <div class="card-body">
-                    @if (session()->has('message'))
-                        <div class="alert alert-success" wire:loading>
-                            {{ session('message') }}
-                        </div>
-                    @endif
-
-                    @if (session()->has('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                    @endif
-
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th class="px-4 py-2">No</th>
-                                    <th class="px-4 py-2">No Lemari</th>
-                                    <th class="px-4 py-2">Deskripsi Lemari</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($this->listCupBoard as $lemari)
-                                    <tr>
-                                        <td class="border px-4 py-2">{{ $loop->iteration }}</td>
-                                        <td class="border px-4 py-2">{{ $lemari->number }}</td>
-                                        <td class="border px-4 py-2">{{ $lemari->description }}</td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="3" class="text-center">No data available</td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
+
 </div>

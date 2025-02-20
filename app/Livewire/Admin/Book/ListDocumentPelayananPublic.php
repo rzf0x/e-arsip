@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class ListDocumentPelayananPublic extends Component
 {
-    #[Title('List dokumen pelayanan public')]
+    #[Title('Dokumen pelayanan public')]
 
     public $editMode = false;
     public $no, $title, $desc, $year, $sender, $status;

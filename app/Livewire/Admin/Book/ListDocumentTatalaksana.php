@@ -11,7 +11,7 @@ use Livewire\Component;
 class ListDocumentTatalaksana extends Component
 {
 
-    #[Title('Halaman dokumen tatalaksana')]
+    #[Title('Dokumen tatalaksana')]
 
     public $editMode = false;
     public $no, $title, $desc, $year, $sender, $status;

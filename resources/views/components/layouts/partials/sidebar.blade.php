@@ -64,39 +64,48 @@
 
                 <li class="sidebar-title">Master Data</li>
 
-                <li class="sidebar-item {{ Request::is('admin/list-buku/*') ? 'active' : '' }} has-sub">
+                <li class="sidebar-item {{ Request::is('admin/list-dokumen/*') ? 'active' : '' }} has-sub">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-book-fill"></i>
-                        <span>List Dokumen</span>
+                        <span>Master Data</span>
                     </a>
 
-                    <ul class="submenu submenu-closed" style="--submenu-height: 215px;">
+                    <ul class="submenu" style="--submenu-height: 515px;">
                         <li
-                            class="submenu-item  {{ Request::is('admin/list-buku/list-dokumen-tatalaksana') ? 'active' : '' }}">
-                            <a href="{{ route('list-dokumen-tatalaksana') }}" class="submenu-link">Dokumen
-                                Tatalaksana</a>
+                            class="submenu-item  {{ Request::is('admin/list-dokumen/list-dokumen-tatalaksana-pelayanan-publik') ? 'active' : '' }}">
+                            <a href="{{ route('list-dokumen-tatalaksana-pelayanan-publik') }}"
+                                class="submenu-link">Dokumen Tatalaksana
+                                dan Pelayanan Publik</a>
                         </li>
 
                         <li
-                            class="submenu-item  {{ Request::is('admin/list-buku/list-dokumen-pelayanan-public') ? 'active' : '' }}">
-                            <a href="{{ route('list-dokumen-pelayanan-public') }}" class="submenu-link">Dokumen
-                                Pelayanan Public</a>
+                            class="submenu-item  {{ Request::is('admin/list-dokumen/list-dokumen-peningkatan-kinerja-reformasi-birokrasi') ? 'active' : '' }}">
+                            <a href="{{ route('list-dokumen-peningkatan-kinerja-reformasi-birokrasi') }}"
+                                class="submenu-link">Dokumen
+                                Peningkanan Kinerja dan Reformasi Birokrasi</a>
+                        </li>
+
+                        <li
+                            class="submenu-item  {{ Request::is('admin/list-dokumen/list-dokumen-kelembagaan-anjab') ? 'active' : '' }}">
+                            <a href="{{ route('list-dokumen-kelembagaan-anjab') }}" class="submenu-link">Dokumen
+                                Kelembagaan
+                                dan Anjab</a>
+                        </li>
+
+                        <li
+                            class="submenu-item  {{ Request::is('admin/list-dokumen/list-dokumen-data-inovasi-pelayanan-publik') ? 'active' : '' }}">
+                            <a href="{{ route('list-dokumen-data-inovasi-pelayanan-publik') }}"
+                                class="submenu-link">Dokumen
+                                Data Inovasi Pelayanan publik</a>
+                        </li>
+
+                        <li class="submenu-item  {{ Request::is('admin/list-lemari') ? 'active' : '' }}">
+                            <a href="{{ route('list-lemari') }}" class="submenu-link">List Lemari</a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="sidebar-item {{ Request::is('admin/list-lemari') ? 'active' : '' }}"">
-                    <a href={{ route('list-lemari') }} class='sidebar-link'>
-                        <i class="bi bi-collection-fill"></i>
-                        <span>List Lemari</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-title">Logout</li>
-
-                <li class="sidebar-item">
-                    <livewire:Auth.Logout>
-                </li>
+                <livewire:Auth.Logout>
 
             </ul>
         </div>

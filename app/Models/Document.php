@@ -9,13 +9,6 @@ class Document extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'no',
-        'title',
-        'desc',
-        'year',
-        'sender',
-        'status',
-        'tipe_doc'
-    ];
+    protected $table = 'documents';
+    protected $fillable = ['no', 'title', 'desc', 'year', 'sender', 'status', 'tipe_doc', 'file'];
 }
