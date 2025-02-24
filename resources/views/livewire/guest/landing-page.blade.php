@@ -33,7 +33,7 @@
                         </p> --}}
                             <p class="card-text mb-3">🗓️ <strong>Tahun:</strong>
                                 {{ $document->year }}</p>
-                            <a href="{{ asset($document->file) }}"
+                            <a href="{{ asset('storage/' . $document->file) }}"
                                 class="btn btn-primary w-100 d-flex align-items-center justify-content-center"
                                 target="_blank">
                                 📌Lihat Dokumen
