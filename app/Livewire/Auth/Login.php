@@ -3,8 +3,6 @@
 namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Http\Request;
 use Livewire\Component;
 
 class Login extends Component
@@ -30,18 +28,6 @@ class Login extends Component
         'password.required' => 'Password wajib diisi.',
         // 'password.min' => 'Password minimal 8 karakter.',
     ];
-
-    public function mount(Request $request)
-    {
-        // Cek apakah cookies ada sebelum dihapus
-        if ($request->hasCookie('laravel_session')) {
-            Cookie::queue(Cookie::forget('laravel_session'));
-        }
-
-        if ($request->hasCookie('XSRF-TOKEN')) {
-            Cookie::queue(Cookie::forget('XSRF-TOKEN'));
-        }
-    }
 
     public function isFormFilled()
     {
