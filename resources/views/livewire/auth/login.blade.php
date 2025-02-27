@@ -39,7 +39,25 @@
 
         </div>
 
+        <small class="text-danger">
+            *Kalau login error, silahkan di refresh terlebih dahulu sebelum melakukan login kembali
+        </small>
+
         <button type="submit" @if ($isSubmitActive && !$errors->any()) '' @else disabled @endif
             class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
     </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (document.cookie.includes("laravel_session")) {
+                document.cookie = "laravel_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            }
+
+            if (document.cookie.includes("XSRF-TOKEN")) {
+                document.cookie = "XSRF-TOKEN=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            }
+        });
+    </script>
+
+
 </div>
