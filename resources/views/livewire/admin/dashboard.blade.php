@@ -2,7 +2,7 @@
     <div class="row">
         {{-- Graphic Chart --}}
         <div class="col-lg-6 col-md-12 col-12">
-            <div class="card" style="height: 100%;">
+            <div class="card shadow" style="height: 100%;">
                 <div class="card-body" style="height: 100%;">
                     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
                     <div id="chart" style="height: 75vh;"></div>
@@ -56,13 +56,13 @@
                     <x-card title="Sub Bag Peningkanan Kinerja dan Reformasi Birokrasi"
                         route="{{ route('list-dokumen-peningkatan-kinerja-reformasi-birokrasi') }}"
                         buttonText="📂 Klik untuk melihat detail"
-                        footerText="📑 Total jumlah dokumen tersedia : {{ $totalDokumenKelembagaanAnjab }}" />
+                        footerText="📑 Total jumlah dokumen tersedia : {{ $totalDokumenPeningkatanKinerjaReformasiBirokrasi }}" />
 
                 </div>
                 <div class="col-lg-6">
                     <x-card title="Sub Bag Kelembagaan dan Anjab" route="{{ route('list-dokumen-kelembagaan-anjab') }}"
                         buttonText="📂 Klik untuk melihat detail"
-                        footerText="📑 Total jumlah dokumen tersedia : {{ $totalDokumenInovasiPelayananPublik }}" />
+                        footerText="📑 Total jumlah dokumen tersedia : {{ $totalDokumenKelembagaanAnjab }}" />
 
                 </div>
 
@@ -70,7 +70,7 @@
                     <x-card title="Data Inovasi Pelayanan publik"
                         route="{{ route('list-dokumen-data-inovasi-pelayanan-publik') }}"
                         buttonText="📂 Klik untuk melihat detail"
-                        footerText="📑 Total jumlah dokumen tersedia : {{ $totalDokumenPeningkatanKinerjaReformasiBirokrasi }}" />
+                        footerText="📑 Total jumlah dokumen tersedia : {{ $totalDokumenInovasiPelayananPublik }}" />
 
                 </div>
 

@@ -1,7 +1,7 @@
 <div class="container mt-5">
 
     <h2 class="text-center">
-        Selamat datang di Sistem Informasi <br> kumpulan arsip bagian organisasi
+        Selamat Datang di Sistem Informasi <br> Kumpulan Arsip Bagian Organisasi (SIKARBO)
     </h2>
 
     <div class="mb-4 mt-5">

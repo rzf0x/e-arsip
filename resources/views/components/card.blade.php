@@ -1,6 +1,6 @@
-<div class="card">
+<div class="card shadow">
     <div class="card-header">
-        <h5 class="text-center text-info">{{ $title }}</h5>
+        <h5 class="text-center">{{ $title }}</h5>
     </div>
     <div class="card-body text-center">
         <a href="{{ $route }}">
