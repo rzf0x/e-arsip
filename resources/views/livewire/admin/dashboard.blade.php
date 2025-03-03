@@ -1,8 +1,8 @@
 <div>
     <div class="row">
         {{-- Graphic Chart --}}
-        <div class="col-lg-6 col-md-12 col-12">
-            <div class="card shadow" style="height: 100%;">
+        <div class="col-lg-6 col-md-12 col-12 mb-5">
+            <div class="card shadow-lg" style="height: 100%;">
                 <div class="card-body" style="height: 100%;">
                     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
                     <div id="chart" style="height: 75vh;"></div>

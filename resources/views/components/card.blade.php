@@ -1,4 +1,4 @@
-<div class="card shadow">
+<div class="card shadow-lg">
     <div class="card-header">
         <h5 class="text-center">{{ $title }}</h5>
     </div>
