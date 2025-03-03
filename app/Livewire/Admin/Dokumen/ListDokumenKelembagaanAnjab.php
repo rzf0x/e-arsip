@@ -18,7 +18,7 @@ class ListDokumenKelembagaanAnjab extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    #[Title('Dokumen Peningkatan Kinerja Reformasi Birokrasi')]
+    #[Title('Dokumen Kelembagaan Anjab')]
 
     public $search = '';
     public $sortField = 'id';
@@ -103,7 +103,7 @@ class ListDokumenKelembagaanAnjab extends Component
         $filePath = $this->file->store('documents/KelembagaanAnjab', 'public'); // Store in 'storage/app/public/documents'
 
         Document::create([
-            'no' => "doc-tatalaksana-" . $noUrutan,
+            'no' => "doc-kelembagaan-anjab-" . $noUrutan,
             'title' => $this->title,
             'desc' => $this->desc,
             'year' => $this->year,

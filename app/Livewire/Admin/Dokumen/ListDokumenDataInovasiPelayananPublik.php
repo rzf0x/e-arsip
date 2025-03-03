@@ -17,7 +17,7 @@ class ListDokumenDataInovasiPelayananPublik extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    #[Title('Dokumen Peningkatan Kinerja Reformasi Birokrasi')]
+    #[Title('Dokumen Data Inovasi Pelayanan Publik')]
 
     public $search = '';
     public $sortField = 'id';
@@ -103,7 +103,7 @@ class ListDokumenDataInovasiPelayananPublik extends Component
         $filePath = $this->file->store('documents/InovasiPelayananPublik', 'public'); // Store in 'storage/app/public/documents'
 
         Document::create([
-            'no' => "doc-tatalaksana-" . $noUrutan,
+            'no' => "doc-data-inovasi-pelayanan-publik-" . $noUrutan,
             'title' => $this->title,
             'desc' => $this->desc,
             'year' => $this->year,

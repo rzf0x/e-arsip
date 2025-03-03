@@ -61,8 +61,8 @@
     </div>
 
     {{-- Modal --}}
-    <div class="modal fade text-left" id="info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel130"
-        aria-hidden="true">
+    <div class="modal fade text-left" id="info" tabindex="-1" wire:ignore.self role="dialog"
+        aria-labelledby="myModalLabel130" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">

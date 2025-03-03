@@ -195,7 +195,7 @@
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                             <button type="button" wire:click.prevent="{{ $editMode ? 'update' : 'store' }}"
                                 class="btn btn-md btn-primary" data-bs-dismiss="modal" wire:loading.attr="disabled"
-                                wire:target="{{ $editMode ? 'update' : 'store' }}" onclick="showAlert()">
+                                wire:target="file" onclick="showAlert()">
                                 {{ $editMode ? 'Update' : 'Simpan' }}
                             </button>
                         </div>

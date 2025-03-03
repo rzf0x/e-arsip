@@ -16,7 +16,7 @@ class ListDokumenPeningkatanKinerjaReformasiBirokrasi extends Component
     use WithFileUploads;
 
     protected $paginationTheme = 'bootstrap';
-
+    // list-dokumen-peningkatan-kinerja-reformasi-birokrasi
     #[Title('Dokumen Peningkatan Kinerja Reformasi Birokrasi')]
 
     public $search = '';
@@ -103,7 +103,7 @@ class ListDokumenPeningkatanKinerjaReformasiBirokrasi extends Component
         $filePath = $this->file->store('documents/PeningkatanKinerjaReformasiBirokrasi', 'public'); // Store in 'storage/app/public/documents'
 
         Document::create([
-            'no' => "doc-tatalaksana-" . $noUrutan,
+            'no' => "doc-peningkatan-kinerja-reformasi-birokrasi-" . $noUrutan,
             'title' => $this->title,
             'desc' => $this->desc,
             'year' => $this->year,
