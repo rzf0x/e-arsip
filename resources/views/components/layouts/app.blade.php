@@ -27,8 +27,7 @@
 
         @include('components.layouts.partials.sidebar')
 
-        <div id="main"
-            style="background: url('{{ asset('contoh.jpeg') }}') no-repeat center; background-size: cover;">
+        <div id="main">
 
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
@@ -37,7 +36,7 @@
             </header>
 
             <div class="page-heading">
-                <h3 class="text-black">{{ $title ?? 'Page Title' }}</h3>
+                <h3 class="text-primary">{{ $title ?? 'Page Title' }}</h3>
             </div>
             <div class="page-content">
                 {{ $slot }}
