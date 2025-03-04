@@ -30,7 +30,7 @@
                 @endif
             </div>
 
-            <table class="table table-bordered">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         {{-- <th wire:click="sortBy('id')" style="cursor: pointer;">
