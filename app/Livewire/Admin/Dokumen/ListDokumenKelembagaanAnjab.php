@@ -103,7 +103,7 @@ class ListDokumenKelembagaanAnjab extends Component
         $filePath = $this->file->store('documents/KelembagaanAnjab', 'public'); // Store in 'storage/app/public/documents'
 
         Document::create([
-            'no' => "doc-kelembagaan-anjab-" . $noUrutan,
+            'no' => "KA." . $noUrutan,
             'title' => $this->title,
             'desc' => $this->desc,
             'year' => $this->year,

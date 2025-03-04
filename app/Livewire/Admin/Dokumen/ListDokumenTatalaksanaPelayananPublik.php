@@ -104,7 +104,7 @@ class ListDokumenTatalaksanaPelayananPublik extends Component
         $filePath = $this->file->store('documents/TatalaksanaPelayananPublik', 'public'); // Store in 'storage/app/public/documents'
 
         Document::create([
-            'no' => "doc-tatalaksana-" . $noUrutan,
+            'no' => "TPP." . $noUrutan,
             'title' => $this->title,
             'desc' => $this->desc,
             'year' => $this->year,

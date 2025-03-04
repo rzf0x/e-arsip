@@ -103,7 +103,7 @@ class ListDokumenPeningkatanKinerjaReformasiBirokrasi extends Component
         $filePath = $this->file->store('documents/PeningkatanKinerjaReformasiBirokrasi', 'public'); // Store in 'storage/app/public/documents'
 
         Document::create([
-            'no' => "doc-peningkatan-kinerja-reformasi-birokrasi-" . $noUrutan,
+            'no' => "PKRB." . $noUrutan,
             'title' => $this->title,
             'desc' => $this->desc,
             'year' => $this->year,

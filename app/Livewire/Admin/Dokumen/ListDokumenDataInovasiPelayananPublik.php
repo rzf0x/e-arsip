@@ -103,7 +103,7 @@ class ListDokumenDataInovasiPelayananPublik extends Component
         $filePath = $this->file->store('documents/InovasiPelayananPublik', 'public'); // Store in 'storage/app/public/documents'
 
         Document::create([
-            'no' => "doc-data-inovasi-pelayanan-publik-" . $noUrutan,
+            'no' => "DIPP." . $noUrutan,
             'title' => $this->title,
             'desc' => $this->desc,
             'year' => $this->year,
