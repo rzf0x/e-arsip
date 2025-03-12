@@ -13,6 +13,7 @@ class LandingPage extends Component
 {
 
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     #[Layout('components.layouts.guest')]
     #[Title('Sistem Informasi kumpulan arsip bagian organisasi')]
